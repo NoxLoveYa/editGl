@@ -13,5 +13,5 @@
 #include "../../lib/imgui/imgui_internal.h"
 
 void StyleColorsCustom(ImGuiStyle* dst = NULL);
-
 void StyleColorsTopBarCustom(ImGuiStyle* dst = NULL);
+void StyleColorsSubMenusCustom(ImGuiStyle *dst = NULL);

@@ -85,4 +85,17 @@ namespace visualizer
         glfwDestroyWindow(window);
         glfwTerminate();
     }
+
+    std::vector<std::string> Window::getFilesInDir(const std::string &dirPath)
+    {
+        std::vector<std::string> files;
+        for (const auto &entry : std::filesystem::directory_iterator(dirPath))
+            files.push_back(entry.path().string());
+        return files;
+    }
+
+    std::vector<std::string> Window::getFilesInCurDir()
+    {
+        return getFilesInDir(currentDir);
+    }
 }

@@ -17,8 +17,8 @@ void StyleColorsCustom(ImGuiStyle *dst)
     colors[ImGuiCol_WindowBg]               = ImVec4(0.075f, 0.075f, 0.075f, 1.00f);
     colors[ImGuiCol_ChildBg]                = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
     colors[ImGuiCol_PopupBg]                = ImVec4(0.11f, 0.11f, 0.14f, 0.92f);
-    colors[ImGuiCol_Border]                 = ImVec4(0.50f, 0.50f, 0.50f, 0.00f);
-    colors[ImGuiCol_BorderShadow]           = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+    colors[ImGuiCol_Border]                 = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);
+    colors[ImGuiCol_BorderShadow]           = ImVec4(1.00f, 0.00f, 0.00f, 0.00f);
     colors[ImGuiCol_FrameBg]                = ImVec4(0.43f, 0.43f, 0.43f, 0.39f);
     colors[ImGuiCol_FrameBgHovered]         = ImVec4(0.47f, 0.47f, 0.69f, 0.40f);
     colors[ImGuiCol_FrameBgActive]          = ImVec4(0.42f, 0.41f, 0.64f, 0.69f);
@@ -76,6 +76,19 @@ void StyleColorsTopBarCustom(ImGuiStyle *dst)
     ImVec4* colors = style->Colors;
 
     colors[ImGuiCol_WindowBg]               = ImVec4(0.110f, 0.110f, 0.110f, 1.00f);
+    colors[ImGuiCol_Border]                 = ImVec4(0.500f, 0.500f, 0.500f, 0.00f);
+    colors[ImGuiCol_Button]                 = ImVec4(0.110f, 0.110f, 0.110f, 1.00f);
+    colors[ImGuiCol_ButtonHovered]          = ImVec4(0.220f, 0.220f, 0.220f, 1.00f);
+    colors[ImGuiCol_ButtonActive]           = ImVec4(0.330f, 0.330f, 0.330f, 1.00f);
+}
+
+void StyleColorsSubMenusCustom(ImGuiStyle *dst)
+{
+    ImGuiStyle* style = dst ? dst : &ImGui::GetStyle();
+    ImVec4* colors = style->Colors;
+
+    colors[ImGuiCol_WindowBg]               = ImVec4(0.110f, 0.110f, 0.110f, 1.00f);
+    colors[ImGuiCol_Border]                 = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);
     colors[ImGuiCol_Button]                 = ImVec4(0.110f, 0.110f, 0.110f, 1.00f);
     colors[ImGuiCol_ButtonHovered]          = ImVec4(0.220f, 0.220f, 0.220f, 1.00f);
     colors[ImGuiCol_ButtonActive]           = ImVec4(0.330f, 0.330f, 0.330f, 1.00f);
