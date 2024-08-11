@@ -23,21 +23,22 @@ namespace visualizer
     class Window
     {
     public:
-        // Constructor / Destructor
+    // Constructor / Destructor
         Window(int width, int height, const char *title);
         ~Window();
-        // Operator
+    // Operator
         operator GLFWwindow *() { return window; }
-        // Getter
+    // Getter
         GLFWwindow *GetWindow() { return window; }
-        // Method
+    // Method
         bool ShouldClose() { return glfwWindowShouldClose(window); }
         void SwapBuffers() { glfwSwapBuffers(window); }
         void PollEvents() { glfwPollEvents(); }
 
         void ProcessInput();
         void update();
-        // Callback
+
+    // Callbacks
         static void framebuffer_size_callback(GLFWwindow *window, int width, int height)
         {
             (void)window;
@@ -45,8 +46,11 @@ namespace visualizer
         }
 
     private:
+    // Attributes
         GLFWwindow *window;
         ImGuiIO *io;
         int width, height;
+    // Methods
+        void renderMenu();
     };
 }

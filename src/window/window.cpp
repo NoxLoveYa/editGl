@@ -20,7 +20,7 @@ ImGuiIO *setupImGui()
     io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
     // Setup Dear ImGui style
-    //ImGui::StyleColorsDark();
+    // ImGui::StyleColorsDark();
     // ImGui::StyleColorsLight();
     StyleColorsCustom();
     return &io;
@@ -40,7 +40,8 @@ namespace visualizer
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
         // Set OpenGL profile to core
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-        glfwWindowHint(GLFW_ALPHA_BITS, 8);  // For GLFW transparent window
+        glfwWindowHint(GLFW_ALPHA_BITS, 8); // For GLFW transparent window
+        //glfwWindowHint(GLFW_DECORATED, GLFW_FALSE); // remove title bar
         // Create window
         window = glfwCreateWindow(width, height, title, NULL, NULL);
         if (!window)
