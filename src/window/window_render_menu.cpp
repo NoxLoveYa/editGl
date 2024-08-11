@@ -106,7 +106,10 @@ namespace visualizer
         std::vector<std::string> files = window->getFilesInCurDir();
         for (auto &file : files)
         {
-            if (Button(file.c_str()))
+            std::string filename = std::filesystem::is_directory(file) ?
+                file.substr(file.find_last_of("/\\")) : file.substr(file.find_last_of("/\\") + 1);
+
+            if (Button(filename.c_str()))
             {
                 if (std::filesystem::is_directory(file))
                 {
