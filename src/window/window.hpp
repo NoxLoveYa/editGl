@@ -16,6 +16,7 @@
 #include "../../lib/imgui/imgui_impl_glfw.h"
 #include "../../lib/imgui/imgui_impl_opengl3.h"
 
+#include "window_style.hpp"
 #include "../shaders/shaders.hpp"
 
 namespace visualizer
@@ -30,6 +31,8 @@ namespace visualizer
         operator GLFWwindow *() { return window; }
     // Getter
         GLFWwindow *GetWindow() { return window; }
+        int GetWidth() { return width; }
+        int GetHeight() { return height; }
     // Method
         bool ShouldClose() { return glfwWindowShouldClose(window); }
         void SwapBuffers() { glfwSwapBuffers(window); }

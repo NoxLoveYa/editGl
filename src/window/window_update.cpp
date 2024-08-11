@@ -35,7 +35,7 @@ namespace visualizer
             // Render Menu
             renderMenu();
 
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClearColor(0.075f, 0.075f, 0.075f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
             // Rendering
             ImGui::Render();
