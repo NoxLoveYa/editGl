@@ -15,6 +15,7 @@
 #include "../../lib/imgui/imgui.h"
 #include "../../lib/imgui/imgui_impl_glfw.h"
 #include "../../lib/imgui/imgui_impl_opengl3.h"
+#include "../../lib/imgui/imgui_internal.h"
 
 #include "window_style.hpp"
 #include "../shaders/shaders.hpp"
@@ -33,6 +34,9 @@ namespace visualizer
         GLFWwindow *GetWindow() { return window; }
         int GetWidth() { return width; }
         int GetHeight() { return height; }
+        std::string GetContent() { return content; }
+    // Setter
+        void SetContent(std::string content) { this->content = content; }
     // Method
         bool ShouldClose() { return glfwWindowShouldClose(window); }
         void SwapBuffers() { glfwSwapBuffers(window); }
@@ -53,6 +57,7 @@ namespace visualizer
         GLFWwindow *window;
         ImGuiIO *io;
         int width, height;
+        std::string content;
     // Methods
         void renderMenu();
     };

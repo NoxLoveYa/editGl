@@ -53,8 +53,11 @@ namespace visualizer
                     ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
                     ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
             SetCursorPos(ImVec2(0, 0));
-            if (Button("Open", ImVec2(60, 24)))
+            if (Button("Open", ImVec2(60, 24))) {
                 Menuvar::fileMenuOpen = false;
+                window->SetContent("Open\nhdyzq");
+                std::cout << window->GetContent() << std::endl;
+            }
             SetCursorPos(ImVec2(0, 24));
             if (Button("Save", ImVec2(60, 24)))
                 Menuvar::fileMenuOpen = false;
@@ -79,8 +82,24 @@ namespace visualizer
         }
     }
 
+    static void renderContent(visualizer::Window *window)
+    {
+        StyleColorsCustom();
+        SetNextWindowPos(ImVec2(0, 28));
+        SetNextWindowSize(ImVec2(window->GetWidth(), window->GetHeight() - 28));
+        Begin(
+            "Content",
+            NULL,
+            ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
+                ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
+                ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
+        Text(window->GetContent().c_str());
+        End();
+    }
+
     void Window::renderMenu()
     {
         renderTopBar(this);
+        renderContent(this);
     }
 }
