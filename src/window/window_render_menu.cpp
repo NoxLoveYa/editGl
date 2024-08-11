@@ -70,7 +70,15 @@ namespace visualizer
             }
             SetCursorPos(ImVec2(0, 24));
             if (Button("Save", ImVec2(60, 24)))
+            {
+                std::ofstream ofs(window->GetCurrentDir() + "/" + window->GetCurrentFile());
+                if (ofs.is_open()) {
+                    ofs.clear();
+                    ofs << window->GetContent().c_str();
+                    ofs.close();
+                }
                 Menuvar::fileMenuOpen = false;
+            }
             End();
             // Render help menu
         }
@@ -106,8 +114,7 @@ namespace visualizer
         std::vector<std::string> files = window->getFilesInCurDir();
         for (auto &file : files)
         {
-            std::string filename = std::filesystem::is_directory(file) ?
-                file.substr(file.find_last_of("/\\")) : file.substr(file.find_last_of("/\\") + 1);
+            std::string filename = std::filesystem::is_directory(file) ? file.substr(file.find_last_of("/\\")) : file.substr(file.find_last_of("/\\") + 1);
 
             if (Button(filename.c_str()))
             {
@@ -121,6 +128,7 @@ namespace visualizer
                     std::string content((std::istreambuf_iterator<char>(ifs)),
                                         (std::istreambuf_iterator<char>()));
                     window->SetContent(content);
+                    window->SetCurrentFile(filename.c_str());
                     Menuvar::openMenuOpen = false;
                 }
             }
@@ -138,16 +146,17 @@ namespace visualizer
             NULL,
             ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
                 ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
-                ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
-        Text(window->GetContent().c_str());
+                ImGuiWindowFlags_AlwaysAutoResize);
+        SetCursorPos(ImVec2(0, 0));
+        InputTextMultiline("##", &window->content, ImVec2(window->GetWidth(), window->GetHeight() - 36), ImGuiInputTextFlags_AllowTabInput);
         End();
     }
 
     void Window::renderMenu()
     {
         renderContent(this);
+        renderTopBar(this);
         if (Menuvar::openMenuOpen)
             renderOpenMenu(this);
-        renderTopBar(this);
     }
 }

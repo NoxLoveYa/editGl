@@ -18,6 +18,7 @@
 #include "../../lib/imgui/imgui_impl_glfw.h"
 #include "../../lib/imgui/imgui_impl_opengl3.h"
 #include "../../lib/imgui/imgui_internal.h"
+#include "../../lib/imgui/imgui_stdlib.h"
 
 #include "window_style.hpp"
 #include "../shaders/shaders.hpp"
@@ -30,6 +31,8 @@ namespace visualizer
     // Constructor / Destructor
         Window(int width, int height, const char *title);
         ~Window();
+    // Attributes
+        std::string content = "Je ne fais que test mon éditeur de text un peu pourris\nmais c'est pas grave, je vais le rendre plus beau et plus fonctionnel\n";
     // Operator
         operator GLFWwindow *() { return window; }
     // Getter
@@ -37,9 +40,12 @@ namespace visualizer
         int GetWidth() { return width; }
         int GetHeight() { return height; }
         std::string GetContent() { return content; }
+        std::string GetCurrentDir() { return currentDir; }
+        std::string GetCurrentFile() { return currentFile; }
     // Setter
         void SetContent(std::string content) { this->content = content; }
         void SetCurrentDir(std::string currentDir) { this->currentDir = currentDir; }
+        void SetCurrentFile(std::string currentFile) { this->currentFile = currentFile; }
     // Method
         bool ShouldClose() { return glfwWindowShouldClose(window); }
         void SwapBuffers() { glfwSwapBuffers(window); }
@@ -62,8 +68,8 @@ namespace visualizer
         GLFWwindow *window;
         ImGuiIO *io;
         int width, height;
-        std::string content = "Je ne fais que test mon éditeur de text un peu pourris\nmais c'est pas grave, je vais le rendre plus beau et plus fonctionnel\n";
         std::string currentDir = getenv("HOME");
+        std::string currentFile = "";
     // Methods
         void renderMenu();
     };
