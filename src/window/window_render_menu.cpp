@@ -97,7 +97,7 @@ namespace visualizer
     static void renderOpenMenu(visualizer::Window *window)
     {
         StyleColorsSubMenusCustom();
-        SetNextWindowSize(ImVec2(200, 100));
+        SetNextWindowSize(ImVec2(200, 200));
         Begin(
             "Open A File",
             NULL,
