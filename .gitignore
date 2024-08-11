@@ -1,0 +1,4 @@
+raveVisualizer
+*.o
+*.vscode
+*.ini
